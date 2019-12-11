@@ -12,6 +12,7 @@ class App extends Component {
   }
 
   addNewReservation = (name, date, time, number) => {
+    console.log('firing');
     fetch('http://localhost:3001/api/v1/reservations', {
       method: 'POST',
       headers: {
@@ -25,8 +26,7 @@ class App extends Component {
       })
     }).then(response => response.json())
       .then(data => {
-        this.state.ogReservations.push(data);
-        return this.setState({ogReservations: this.state.ogReservations})
+        return this.setState({ogReservations: [...this.state.ogReservations, data]})
       })
   }
 

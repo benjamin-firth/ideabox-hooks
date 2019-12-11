@@ -23,19 +23,19 @@ class Form extends Component {
         <input 
           name="name" 
           value={this.state.name} 
-          onChange={(e) => this.handleChange(e)} placeHolder="Name" />
+          onChange={(e) => this.handleChange(e)} placeholder="Name" />
         <input 
           name="date" 
           value={this.state.date} 
-          onChange={(e) => this.handleChange(e)} placeHolder="Date" />
+          onChange={(e) => this.handleChange(e)} placeholder="Date" />
         <input 
           name="time" 
           value={this.state.time} 
-          onChange={(e) => this.handleChange(e)} placeHolder="Time" />
+          onChange={(e) => this.handleChange(e)} placeholder="Time" />
         <input 
           name="number" 
           value={this.state.number} 
-          onChange={(e) => this.handleChange(e)} placeHolder="Number of Guests" />
+          onChange={(e) => this.handleChange(e)} placeholder="Number of Guests" />
         <button 
           type="button" 
           onClick={() => this.props.addNewReservation(this.state.name, this.state.date, this.state.time, this.state.number)}>Make Reservation</button>

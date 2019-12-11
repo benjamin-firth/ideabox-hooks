@@ -12,7 +12,6 @@ class App extends Component {
   }
 
   addNewReservation = (name, date, time, number) => {
-    console.log('firing');
     fetch('http://localhost:3001/api/v1/reservations', {
       method: 'POST',
       headers: {

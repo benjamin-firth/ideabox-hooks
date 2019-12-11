@@ -38,7 +38,7 @@ describe('Form', () => {
     })
   })
 
-  describe('Click events for form', () => {
+  describe('Events for form', () => {
 
     it('should fire addNewReservation when clicked', () => {
       const mockAddNewReservation = jest.fn();
@@ -48,6 +48,16 @@ describe('Form', () => {
       expect(mockAddNewReservation).toHaveBeenCalled();
     })
 
+    it('should fire handChange when clicked', () => {
+      const mockEvent = {
+        target: {
+          name: 'name',
+          value: 'John Adams'
+        }
+      }
+      wrapper.instance().handleChange = jest.fn();
+      wrapper.find('input').at(0).simulate('change', mockEvent)
+      expect(wrapper.instance().handleChange).toHaveBeenCalledWith(mockEvent)
+    })
   })
-
 })

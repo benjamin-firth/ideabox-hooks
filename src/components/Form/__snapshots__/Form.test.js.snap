@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Form Snapshots Should match the snapshot 1`] = `
+<section
+  className="enter-form"
+>
+  <input
+    name="name"
+    onChange={[Function]}
+    placeHolder="Name"
+    value=""
+  />
+  <input
+    name="date"
+    onChange={[Function]}
+    placeHolder="Date"
+    value=""
+  />
+  <input
+    name="time"
+    onChange={[Function]}
+    placeHolder="Time"
+    value=""
+  />
+  <input
+    name="number"
+    onChange={[Function]}
+    placeHolder="Number of Guests"
+    value={0}
+  />
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Make Reservation
+  </button>
+</section>
+`;

@@ -23,6 +23,7 @@ exports[`App App Snapshots Should match the snapshot 1`] = `
     className="resy-container"
   >
     <CardContainer
+      deleteReservation={[Function]}
       ogReservations={Array []}
     />
   </div>

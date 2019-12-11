@@ -10,9 +10,31 @@ describe('Form', () => {
   })
 
   describe('Form Snapshots', () => {
+    
     it('Should match the snapshot', () => {
       expect(wrapper).toMatchSnapshot();
     })
   })
 
+  describe('State changes for form', () => {
+    it('Should update state when function is fired', () => {
+      const mockEvent = {
+        target: {
+          name: 'name',
+          value: 'John Adams'
+        }
+      }
+
+      const initialState = {
+        name: '',
+        date: '',
+        time: '',
+        number: 0
+      }
+
+      wrapper.setState(initialState);
+      wrapper.instance().handleChange(mockEvent);
+      expect(wrapper.state('name')).toEqual('John Adams');
+    })
+  })
 })

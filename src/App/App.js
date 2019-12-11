@@ -10,7 +10,7 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-          
+          <h1>hey</h1>
         </div>
       </div>
     )

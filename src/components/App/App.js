@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import CardContainer from '../CardContainer/CardContainer'
+import CardContainer from '../CardContainer/CardContainer';
+import Form from '../Form/Form';
 
 class App extends Component {
   constructor() {
@@ -8,6 +9,22 @@ class App extends Component {
     this.state = {
       ogReservations: []
     }
+  }
+
+  addNewReservation = (name, date, time, number) => {
+    fetch('http://localhost:3001/api/v1/reservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        date: date,
+        time: time,
+        number: number
+      })
+    }).then(response => response.json())
+      .then(data => console.log(data))
   }
 
   componentDidMount() {
@@ -22,6 +39,9 @@ class App extends Component {
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
 
+        </div>
+        <div className='enter-form'>
+          <Form addNewReservation={this.addNewReservation} />
         </div>
         <div className='resy-container'>
           <CardContainer ogReservations={this.state.ogReservations} />

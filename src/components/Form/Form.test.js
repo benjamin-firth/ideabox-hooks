@@ -37,4 +37,17 @@ describe('Form', () => {
       expect(wrapper.state('name')).toEqual('John Adams');
     })
   })
+
+  describe('Click events for form', () => {
+
+    it('should fire addNewReservation when clicked', () => {
+      const mockAddNewReservation = jest.fn();
+      wrapper = shallow(<Form addNewReservation={mockAddNewReservation} />);
+
+      wrapper.find('button').simulate('click');
+      expect(mockAddNewReservation).toHaveBeenCalled();
+    })
+
+  })
+
 })

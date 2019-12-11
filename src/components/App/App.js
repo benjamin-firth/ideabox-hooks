@@ -24,7 +24,10 @@ class App extends Component {
         number: number
       })
     }).then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.state.ogReservations.push(data);
+        return this.setState({ogReservations: this.state.ogReservations})
+      })
   }
 
   componentDidMount() {

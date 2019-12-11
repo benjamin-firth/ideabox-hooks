@@ -11,6 +11,16 @@ class App extends Component {
     }
   }
 
+  deleteReservation = (id) => {
+    return fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => response.json())
+      .then(data => this.setState({ogReservations: data}))
+  }
+
   addNewReservation = (name, date, time, number) => {
     fetch('http://localhost:3001/api/v1/reservations', {
       method: 'POST',
@@ -46,7 +56,7 @@ class App extends Component {
           <Form addNewReservation={this.addNewReservation} />
         </div>
         <div className='resy-container'>
-          <CardContainer ogReservations={this.state.ogReservations} />
+          <CardContainer deleteReservation={this.deleteReservation} ogReservations={this.state.ogReservations} />
         </div>
       </div>
     )

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 
-const Card = ({ id, name, date, time, number}) => {
+const Card = ({ id, name, date, time, number, deleteReservation}) => {
 
   return(
     <div className="card">
@@ -9,7 +9,7 @@ const Card = ({ id, name, date, time, number}) => {
       <p>{date}</p>
       <p>{time} pm</p>
       <p>Number of Guests: {number}</p>
-      <button typer="button" id={id} >Cancel</button>
+      <button type="button" id={id} onClick={() => deleteReservation(id)}>Cancel</button>
     </div>
   )
 }

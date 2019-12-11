@@ -2,7 +2,7 @@ import React from 'react';
 import './CardContainer.css';
 import Card from '../Card/Card';
 
-const CardContainer = ({ ogReservations }) => {
+const CardContainer = ({ ogReservations, deleteReservation }) => {
   const cards = ogReservations.map(card => {
     return(
       <Card 
@@ -11,6 +11,7 @@ const CardContainer = ({ ogReservations }) => {
         date={card.date} 
         time={card.time} 
         number={card.number} 
+        deleteReservation={deleteReservation}
       />
     )
   })

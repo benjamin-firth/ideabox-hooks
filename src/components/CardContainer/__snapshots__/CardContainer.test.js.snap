@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardContainer CardContainer Snapshots Should match the snapshot 1`] = `
+<div
+  className="cards-container"
+>
+  <Card
+    date="12/12"
+    id={123}
+    name="test-ben"
+    number={3}
+    time="7:00"
+  />
+</div>
+`;

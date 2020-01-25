@@ -1,47 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './Form.css';
 
-class Form extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: '',
-      date: '',
-      time: '',
-      number: 0
-    }
-  }
+const Form = ({ addNewReservation }) => {
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value});
-    console.log(this.state);
-  }
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [number, setNumber] = useState(0);
 
-  render() {
-    return(
-      <section className="enter-form">
-        <input 
-          name="name" 
-          value={this.state.name} 
-          onChange={(e) => this.handleChange(e)} placeholder="Name" />
-        <input 
-          name="date" 
-          value={this.state.date} 
-          onChange={(e) => this.handleChange(e)} placeholder="Date" />
-        <input 
-          name="time" 
-          value={this.state.time} 
-          onChange={(e) => this.handleChange(e)} placeholder="Time" />
-        <input 
-          name="number" 
-          value={this.state.number} 
-          onChange={(e) => this.handleChange(e)} placeholder="Number of Guests" />
-        <button 
-          type="button" 
-          onClick={() => this.props.addNewReservation(this.state.name, this.state.date, this.state.time, this.state.number)}>Make Reservation</button>
-      </section>
-    )
-  }
+  return(
+    <section className="enter-form">
+      <input 
+        name="name" 
+        value={name} 
+        onChange={(e) => setName(e.target.value)} placeholder="Name" />
+      <input 
+        name="date" 
+        value={date} 
+        onChange={(e) => setDate(e.target.value)} placeholder="Date" />
+      <input 
+        name="time" 
+        value={time} 
+        onChange={(e) => setTime(e.target.value)} placeholder="Time" />
+      <input 
+        name="number" 
+        value={number} 
+        onChange={(e) => setNumber(e.target.value)} placeholder="Number of Guests" />
+      <button 
+        type="button" 
+        onClick={() => addNewReservation(name, date, time, number)}>Make Reservation</button>
+    </section>
+  )
 }
 
 export default Form;

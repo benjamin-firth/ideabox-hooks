@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import CardContainer from '../CardContainer/CardContainer';
 import Form from '../Form/Form';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      ogReservations: []
-    }
-  }
+const App = () => {
 
-  deleteReservation = (id) => {
+  const [reservations, setReservations] = useState([]);
+
+  const deleteReservation = (id) => {
     return fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response => response.json())
-      .then(data => this.setState({ogReservations: data}))
+    })
+    .then(response => response.json())
+    .then(data => setReservations(data))
   }
 
-  addNewReservation = (name, date, time, number) => {
+  const addNewReservation = (name, date, time, number) => {
     fetch('http://localhost:3001/api/v1/reservations', {
       method: 'POST',
       headers: {
@@ -33,34 +30,32 @@ class App extends Component {
         time: time,
         number: number
       })
-    }).then(response => response.json())
-      .then(data => {
-        return this.setState({ogReservations: [...this.state.ogReservations, data]})
-      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      return setReservations([...reservations, data]);
+    })
   }
 
-  componentDidMount() {
+  useEffect(() => {
     fetch('http://localhost:3001/api/v1/reservations')
       .then(res => res.json())
-      .then(data => this.setState({ ogReservations: data}));
-  }
+      .then(data => setReservations(data));
+  }, []);
 
-  render() {
-    return (
-      <div className="App">
-        <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <div className='resy-form'>
-
-        </div>
-        <div className='enter-form'>
-          <Form addNewReservation={this.addNewReservation} />
-        </div>
-        <div className='resy-container'>
-          <CardContainer deleteReservation={this.deleteReservation} ogReservations={this.state.ogReservations} />
-        </div>
+  return (
+    <div className="App">
+      <h1 className='app-title'>Turing Cafe Reservations</h1>
+      <div className='resy-form'>
       </div>
-    )
-  }
+      <div className='enter-form'>
+        <Form addNewReservation={addNewReservation} />
+      </div>
+      <div className='resy-container'>
+        <CardContainer deleteReservation={deleteReservation} ogReservations={reservations} />
+      </div>
+    </div>
+  )
 }
 
 export default App;

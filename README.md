@@ -1,3 +1,5 @@
+# This was my mid-mod assesment, and I refactored it later to learn React Hooks.
+
 ## Turing Cafe - Reservation Portal
 
 This application was built with `create-react-app`.
